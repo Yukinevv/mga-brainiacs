@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+@use "bootstrap/scss/bootstrap" as * with (
+  $primary: #44001a,
+  $secondary: #b15b5b,
+  $font-family-sans-serif: ("Lato", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif)
+);
+
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+:root {
+  font-size: 16px;
+  --nav-h-mobile: 88px;
+  --nav-h-lg: 96px;
+}
+
+body {
+  padding-top: var(--nav-h-mobile);
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: var(--nav-h-lg);
+  }
+}
+
+.app-brand {
+  font-family: "Architects Daughter", cursive;
+}
+
+.topbar {
+  background-color: var(--bs-primary);
+}
+
+a, .nav-link {
+  text-decoration: none;
+}

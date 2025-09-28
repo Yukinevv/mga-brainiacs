@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark topbar bg-primary fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" routerLink="/">
+      <img
+        [ngSrc]="'/img/logo.png'"
+        width="48"
+        height="48"
+        alt="Brainiacs logo"
+        class="d-inline-block align-text-top"/>
+      <span class="app-brand fs-4 text-white ms-2">Brainiacs</span>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      [attr.aria-expanded]="isOpen ? 'true' : 'false'"
+      aria-controls="mainNav"
+      aria-label="Toggle navigation"
+      (click)="toggleMenu()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" [class.show]="isOpen" id="mainNav">
+      <ul
+        class="navbar-nav ms-auto mb-2 mb-lg-0
+               align-items-end align-items-lg-center
+               text-end text-lg-start
+               pe-3 pe-lg-0">
+        <li class="nav-item">
+          <a
+            routerLink="/"
+            routerLinkActive="active fw-semibold"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a
+            routerLink="/people"
+            routerLinkActive="active fw-semibold"
+            class="nav-link">
+            List of smart guys
+          </a>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link disabled" aria-disabled="true">Help</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

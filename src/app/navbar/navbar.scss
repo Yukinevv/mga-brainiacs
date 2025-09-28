@@ -1,0 +1,23 @@
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    display: block !important;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 220ms ease;
+  }
+
+  .navbar-collapse.show {
+    max-height: 320px;
+  }
+
+  .navbar-collapse .nav-link {
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+
+  .navbar-collapse.show .nav-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
