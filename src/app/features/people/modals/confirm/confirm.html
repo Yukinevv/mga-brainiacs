@@ -1,0 +1,28 @@
+<div class="modal d-block" tabindex="-1" role="dialog" aria-modal="true">
+  <div class="modal-dialog modal-dialog-centered" style="--bs-modal-width: 520px" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header mt-1">
+        <h5 class="modal-title fs-3 mb-0">Confirm delete</h5>
+        <button
+          type="button"
+          class="btn bg-transparent border-0 p-0 ms-auto text-black-50 fs-5 align-self-start mt-0"
+          aria-label="Close"
+          (click)="cancel.emit()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body mt-1 mb-4">
+        <p class="m-0">{{ message() }}</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="cancel.emit()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="confirm.emit()">Delete</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade show"></div>
