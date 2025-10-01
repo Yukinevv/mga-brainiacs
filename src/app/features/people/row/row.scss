@@ -1,0 +1,11 @@
+:host {
+  color: var(--bs-gray-800);
+}
+
+:host.no-bottom > td {
+  border-bottom: 0 !important;
+}
+
+:host > td {
+  border-bottom: 1px solid var(--bs-gray-500) !important;
+}

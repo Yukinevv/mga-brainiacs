@@ -1,0 +1,31 @@
+<div class="table-responsive">
+  <table class="table align-middle people-table w-100 table-striped">
+    <thead class="small fw-bold th-thicker">
+    <tr>
+      <th scope="col" class="ps-3" style="width:40px">Id</th>
+      <th scope="col" class="text-center" style="width:72px">
+        <span class="visually-hidden">Avatar</span>
+      </th>
+      <th scope="col" class="ps-3">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">E-mail</th>
+      <th scope="col" style="width:110px"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+      @for (p of people(); track p.id; let last = $last) {
+        <tr people-row
+            [person]="p"
+            [isLast]="last"
+            (edit)="onEdit($event)"
+            (remove)="onRemove($event)">
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="6" class="text-center text-muted py-4">No data</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

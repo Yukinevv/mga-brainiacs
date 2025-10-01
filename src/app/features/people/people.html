@@ -1,0 +1,54 @@
+<section class="d-flex align-items-center justify-content-between mb-3">
+  <h2 class="m-0 d-flex align-items-center gap-2">
+    <i class="fa-solid fa-user-friends me-2" aria-hidden="true"></i>
+    <span>List of smart guys</span>
+  </h2>
+
+  <button type="button" class="btn btn-primary btn-sm" (click)="openAdd()">
+    <i class="fa-solid fa-plus me-1 icon-thicker"></i> Add brainiac
+  </button>
+</section>
+
+@if (error()) {
+  <div class="alert alert-danger" role="alert">
+    {{ error() }}
+  </div>
+} @else if (loading()) {
+  <div class="d-flex align-items-center gap-2">
+    <div class="spinner-border" role="status" aria-hidden="true"></div>
+    <span>Loading...</span>
+  </div>
+} @else {
+  <people-table
+    [people]="people()"
+    (edit)="openEdit($event)"
+    (remove)="openDelete($event)">
+  </people-table>
+}
+
+@switch (modalKind()) {
+  @case ('add') {
+    <add-edit
+      [title]="'Add new brainiac'"
+      [initial]="null"
+      (close)="closeModal()"
+      (save)="create($event)">
+    </add-edit>
+  }
+  @case ('edit') {
+    <add-edit
+      [title]="'Edit brainiac'"
+      [initial]="selected()"
+      (close)="closeModal()"
+      (save)="saveEdit($event)">
+    </add-edit>
+  }
+}
+
+@if (modalKind() === 'delete') {
+  <confirm
+    [message]="'Are you sure you want to delete this brainiac?'"
+    (cancel)="closeModal()"
+    (confirm)="confirmDelete()">
+  </confirm>
+}
