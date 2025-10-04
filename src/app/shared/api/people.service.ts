@@ -4,6 +4,7 @@ import {ListResponse, Person, PersonCreateDto, PersonUpdateDto} from './people.m
 import {map, Observable} from 'rxjs';
 import {PEOPLE_API_URL} from './people.api.token';
 import {USE_API_KEY} from '../../core/http/api-key.context';
+import {mapApiPerson} from './people.mapping';
 
 @Injectable({providedIn: 'root'})
 export class PeopleService {
@@ -14,14 +15,11 @@ export class PeopleService {
 
   list(page = 1, perPage = 6): Observable<Person[]> {
     return this.http
-      .get<ListResponse<Person>>(
-        `${this.base}/users`,
-        {
-          params: {page, per_page: perPage} as any,
-          context: this.ctxWithApiKey
-        }
-      )
-      .pipe(map(res => res.data));
+      .get<ListResponse<any>>(`${this.base}/users`, {
+        params: { page, per_page: perPage } as any,
+        context: this.ctxWithApiKey
+      })
+      .pipe(map(res => res.data.map(mapApiPerson)));
   }
 
   create(dto: PersonCreateDto): Observable<{ id: string; createdAt: string }> {

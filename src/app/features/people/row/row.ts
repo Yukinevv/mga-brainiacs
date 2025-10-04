@@ -19,6 +19,10 @@ export class PeopleRow {
   edit = output<Person>();
   remove = output<Person>();
 
+  /** Zapasowy 1x1 px, aby ngSrc nigdy nie było puste */
+  readonly fallbackAvatar =
+    'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+
   onEdit(): void {
     this.edit.emit(this.person());
   }

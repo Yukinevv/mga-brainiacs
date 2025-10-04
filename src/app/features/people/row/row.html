@@ -1,10 +1,11 @@
 <td class="py-3 ps-3 pe-1" style="width:40px">{{ person().id }}</td>
 
 <td class="py-3 px-0 text-center" style="width:72px">
-  <img [ngSrc]="person().avatar"
-       width="56"
-       height="56"
-       alt="Avatar of {{ person().first_name }} {{ person().last_name }}">
+  <img
+    [ngSrc]="person().avatar || fallbackAvatar"
+    width="56"
+    height="56"
+    alt="Avatar of {{ person().first_name }} {{ person().last_name }}">
 </td>
 
 <td class="py-3 ps-3">
